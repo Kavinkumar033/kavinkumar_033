@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function call()
+        {
+            let str=document.getElementById("s1").value;
+            document.write("<br> String : "+str);
+            document.write("<br> String : "+str.length);
+            document.write("<br> indexaccess 2: "+str.charAt(2));
+            document.write("<br> Slice from 3: "+str.slice(3));
+            document.write("<br> Substring(0, 4): "+str.substring(0, 4));
+            document.write("<br> substr(3): "+str.substr(3));
+            document.write("<br> UpperCase: "+str.toUpperCase());
+            document.write("<br> LowerCase: "+str.toLowerCase());
+            document.write("<br> Concat: "+(str+".S"));
+            document.write("<br> String Trim: "+str.trim());
+            document.write("<br> String Trim Start: "+str.trimStart());
+            document.write("<br> String Trim End: "+str.trimEnd());
+            document.write("<br> String Repeat: "+str.repeat(2));
+            document.write("<br> String Replace: "+str.replace("kavin","koki"));
+            document.write("<br> String replacAll: "+str.replaceAll("kumar",'Teddy'));
+            document.write("<br> String split with a : "+str.split('a'));
+        }
+    </script>
+</head>
+<body>
+    <h2>String Functions Code</h2>
+    Enter String: <input type="text" name="" id="s1" onblur="call()">
+</body>
+</html>

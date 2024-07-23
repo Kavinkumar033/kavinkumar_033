@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function call()
+        {
+            let num=parseInt(document.getElementById("n1").value);
+            let result=" ";
+            let count=0,i,p=0;
+            if(num==1 || num==0)
+        {
+            result="It is Not a Prime Number";
+            p++;
+        }
+        for(i=2;i<=num;i++)
+        {
+            if(num%i==0)
+        {
+            count++;
+        }
+        }   
+         if(count==1)
+         {
+            result="It is Prime Number";
+         }
+         else{
+            result="It is Not a Prime Number";
+         }
+         document.getElementById("output").innerHTML=result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Prime Number Code</h2>
+     Enter Number <input type="text" name="" id="n1" onblur="call()"><br><br>
+     <label for="">Result: <span id="output"></span></label>
+</body>
+</html>

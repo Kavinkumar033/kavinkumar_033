@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function call()
+        {
+            let str=document.getElementById("s1").value;
+            let rev;
+            rev=str.split('').reverse().join('');
+            console.log(rev);
+            if(str==rev)
+        {
+            document.getElementById("output").innerHTML="It is Palindrome";
+        }
+        else{
+            document.getElementById("output").innerHTML="It is not a Palindrome";
+        }
+        }
+    </script>
+</head>
+<body>
+    <h2>Palindrome Code</h2>
+    Enter String : <input type="text" name="" id="s1" onblur="call()"><br><br>
+    <label for="">Result: <span id="output"></span></label>
+</body>
+</html>

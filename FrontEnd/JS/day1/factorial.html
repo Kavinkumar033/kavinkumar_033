@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function fact()
+        {
+            let num1=parseInt(document.getElementById("n1").value);
+            let i;
+            let result=1;
+            for(i=1;i<=num1;i++)
+        {
+            result=result*i;
+        }
+        document.getElementById("output").innerHTML=result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Factorial Code</h2>
+    Enter Number <input type="text" id="n1"><br><br>
+    <button onclick="fact()">Fact</button><br><br>
+        <label>Result:<span id="output"></span></label><br>     
+</body>
+</html>

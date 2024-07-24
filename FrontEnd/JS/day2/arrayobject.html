@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function myfunction()
+        {
+            let skill=new Array("C"," C++"," Java"," Python");
+            document.write("Array Elements : "+skill);
+            document.write("<br> Array Length : "+skill.length);
+            document.write("<br> First Element : "+skill[0]);
+            document.write("<br> Last Element : "+skill[skill.length - 1]);
+            skill.push(".Net");
+            document.write("<br> Array Elements : "+skill);
+            skill.pop();
+            document.write("<br> Array Elements : "+skill);
+            for(let i=0;i<skill.length;i++)
+        {
+            document.write("<br>"+skill[i]);
+        }
+        }
+    </script>
+</head>
+<body onload="myfunction()">
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<h1>Interpolation Example</h1>
+<br>
+<b>
+  Name:{{name}} <br>
+  Age:{{age}} <br>
+  Email: <input type="text" value="{{ email}}">
+</b>
+<h2>Property Example</h2>
+Name: <input type="text" name="" id="" [value]="name">
+<br><br>
+Age: <input type="text" name="" id="" [value]="age">
+<br><br>
+Email: <input type="text" name="" id="" [value]="email">
+<h2>Event Binding</h2>
+<button (click)="changename()">Change Name</button><br><br>
+<button (click)="changeage()">Change Age</button><br><br>
+<button (click)="changeemail()">Change Email</button>
+<br><br>
+<img [src]="imagepath" alt="" width="500" height="400">
+<br><br>
+<button (click)="changeimage()">Change Image</button>

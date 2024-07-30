@@ -1,3 +1,30 @@
+<h1 [ngClass]="myclass">Structural AND Attributes Directives</h1>
+<br><br>
+<button (click)="change()">show or hide </button>
+<br><br>
+<div *ngIf="flag"  [ngStyle]="mystyle">
+    Welcome
+    <ul>
+      <li *ngFor="let show of anime" (click)="selected(show)">{{show}}</li>
+    </ul>
+
+<br><br>
+ <b>You have selected : {{selecteditem}}</b>
+ <br><br>
+ <div [ngSwitch]="selecteditem">
+    <font color="red" *ngSwitchCase="'Luffy'">Captain : Luffy</font>
+    <font color="green" *ngSwitchCase="'Zoro'">Swordsman : Zoro</font>
+    <font color="blue" *ngSwitchCase="'Sanji'">Cook : Sanji</font>
+    <font color="" *ngSwitchDefault>Invalid</font>
+ </div>
+</div><br><br>
+<button (click)="changestyle()">Change style</button>
+<hr>
+<!-- <h1>Two Way Data Binding</h1>
+Enter your Name <input type="text" name="" id="" [(ngModel)]="fname">
+<br>
+<p>Welcome {{fname}}</p>
+<hr>
 <h1>Interpolation Example</h1>
 <br>
 <b>
@@ -18,4 +45,4 @@ Email: <input type="text" name="" id="" [value]="email">
 <br><br>
 <img [src]="imagepath" alt="" width="500" height="400">
 <br><br>
-<button (click)="changeimage()">Change Image</button>
+<button (click)="changeimage()">Change Image</button> -->

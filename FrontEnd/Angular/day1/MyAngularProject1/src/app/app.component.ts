@@ -10,6 +10,12 @@ export class AppComponent {
   age : number;
   email : string;
   imagepath:string;
+  fname : string;
+  flag: boolean;
+  anime:string[];
+  selecteditem:string;
+  mystyle:{};
+  myclass:string;
 
   constructor()
   {
@@ -17,6 +23,25 @@ export class AppComponent {
     this.age=33
     this.email="kavinkumar1204.s@gmail.com";
     this.imagepath="https://m.media-amazon.com/images/M/MV5BMDkwZmEyYzktMTI1NS00NDBjLThhZTctMGRjMmIyYjFhNWYyXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_.jpg"
+    this.fname="";
+    this.flag=true;
+    this.anime=["Luffy","Zoro","Sanji"];
+    this.selecteditem="";
+    this.mystyle={'background-color' : "gray" , 'border' : '2px solid black','width':'500px'};
+    this.myclass="Myclass1";
+  }
+  changestyle()
+  {
+    this.mystyle={'background-color' : 'cyan' , 'border' : '2px solid black','width':'500px'}
+
+  }
+  selected(show : string)
+  {
+    this.selecteditem=show;
+  }
+  change()
+  {
+    this.flag= ! this.flag;
   }
   changename()
   {

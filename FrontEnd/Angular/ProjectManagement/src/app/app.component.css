@@ -1,4 +1,4 @@
-#head
+/* #head
 {
     border: 1px solid black;
     padding: 20px;
@@ -45,4 +45,14 @@ label
 }
 h2,h3{
       color: rgb(191, 195, 96);
+} */
+th
+{
+    background-color: gray;
+   
+}
+a
+{
+    color: white;
+    text-decoration: none;
 }

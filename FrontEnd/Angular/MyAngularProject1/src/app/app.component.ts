@@ -9,8 +9,10 @@ export class AppComponent {
   name : string;
   age : number;
   email : string;
+  example : string;
   imagepath:string;
   fname : string;
+  sname : string ;
   flag: boolean;
   anime:string[];
   selecteditem:string;
@@ -22,13 +24,15 @@ export class AppComponent {
     this.name="kavin";
     this.age=33
     this.email="kavinkumar1204.s@gmail.com";
+    this.example="Angular Binding Data"
     this.imagepath="https://m.media-amazon.com/images/M/MV5BMDkwZmEyYzktMTI1NS00NDBjLThhZTctMGRjMmIyYjFhNWYyXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_.jpg"
     this.fname="";
+    this.sname="";
     this.flag=true;
     this.anime=["Luffy","Zoro","Sanji"];
     this.selecteditem="";
     this.mystyle={'background-color' : "gray" , 'border' : '2px solid black','width':'500px'};
-    this.myclass="Myclass1";
+    this.myclass="Myclass2";
   }
   changestyle()
   {
@@ -54,6 +58,10 @@ export class AppComponent {
   changeemail()
   {
     this.email="Teddy@gmail.com"
+  }
+  changeexample()
+  {
+    this.example="One Way Data Binding"
   }
   changeimage()
   {

@@ -1,0 +1,515 @@
+
+SQL> connect systen;
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> connect system;
+Enter password:
+Connected.
+SQL> create table tbl_employee(eid number(5),ename varchar2(20),esalary number(5));
+
+Table created.
+
+SQL> insert into tbl_employee values(31,'Teddy',25000);
+
+1 row created.
+
+SQL> insert into tbl_employee values(32,'Kavin',15000);
+
+1 row created.
+
+SQL> insert into tbl_employee values(33,'Kumar',20000);
+
+1 row created.
+
+SQL> insert into tbl_employee values(34,'Bharath',22000);
+
+1 row created.
+
+SQL> insert into tbl_employee values(39,'Niranjan',22000);
+
+1 row created.
+
+SQL> select * from tbl_employee
+  2
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where eid in (31,39);
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where eid not in (31,39);
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+
+SQL> select * from tbl_employee where esalary between 10000 and 22000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where esalary not between 10000 and 22000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+
+SQL> select * from tbl_employee where esalary between 22000 and 10000;
+
+no rows selected
+
+SQL> select * from tbl_employee where esalary between 22000 and 10000;
+
+no rows selected
+
+SQL> select * from tbl_employee where eid (31,32,39) and esalary>15000;
+select * from tbl_employee where eid (31,32,39) and esalary>15000
+                                                *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select * from tbl_employee where eid in (31,32,39) and esalary>15000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where eid in (31,32,39) or esalary>15000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where eid >34 or esalary<15000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where eid >34 and esalary<15000;
+
+no rows selected
+
+SQL> insert into tbl_employee (eid,esalary) values(40,21000);
+
+1 row created.
+
+SQL> select * from tbl_employrr;
+select * from tbl_employrr
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40                           21000
+
+6 rows selected.
+
+SQL> select * from tbl_employee where ename is null;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        40                           21000
+
+SQL> select * from tbl_employee where ename is not null;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee  is not null;
+select * from tbl_employee  is not null
+                            *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> desc tbl_employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(5)
+ ENAME                                              VARCHAR2(20)
+ ESALARY                                            NUMBER(5)
+
+SQL> select * from tbl_employee where ename 'K%';
+select * from tbl_employee where ename 'K%'
+                                       *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select * from tbl_employee where ename like 'K%';
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+        33 Kumar                     20000
+
+SQL> select * from tbl_employee where ename like '_K%';
+
+no rows selected
+
+SQL> select * from tbl_employee where ename like '_a%';
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+
+SQL> select * from tbl_employee where ename like '%n';
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee where ename like '__v%';
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+
+SQL> select * from tbl_employee where ename like '%a%';
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+
+SQL> select * from tbl_employee order by esalary;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        32 Kavin                     15000
+        33 Kumar                     20000
+        40                           21000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        31 Teddy                     25000
+
+6 rows selected.
+
+SQL> select * from tbl_employee order by esalary desc;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        39 Niranjan                  22000
+        34 Bharath                   22000
+        40                           21000
+        33 Kumar                     20000
+        32 Kavin                     15000
+
+6 rows selected.
+
+SQL> select * from tbl_employee order by ename ;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        34 Bharath                   22000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        39 Niranjan                  22000
+        31 Teddy                     25000
+        40                           21000
+
+6 rows selected.
+
+SQL> select * from tbl_employee order by eid desc ;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        40                           21000
+        39 Niranjan                  22000
+        34 Bharath                   22000
+        33 Kumar                     20000
+        32 Kavin                     15000
+        31 Teddy                     25000
+
+6 rows selected.
+
+SQL> select * from tbl_employee unorder by eid ;
+select * from tbl_employee unorder by eid
+                                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> alter table tbl_employee add doj date;
+
+Table altered.
+
+SQL> desc tbl_employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(5)
+ ENAME                                              VARCHAR2(20)
+ ESALARY                                            NUMBER(5)
+ DOJ                                                DATE
+
+SQL> update tbl_employee set doj=sysdate where eid=31;
+
+1 row updated.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY DOJ
+---------- -------------------- ---------- ---------
+        31 Teddy                     25000 07-AUG-24
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40                           21000
+
+6 rows selected.
+
+SQL> update tbl_employee set doj='23-oct-24' where eid in (32,34,40);
+
+3 rows updated.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY DOJ
+---------- -------------------- ---------- ---------
+        31 Teddy                     25000 07-AUG-24
+        32 Kavin                     15000 23-OCT-24
+        33 Kumar                     20000
+        34 Bharath                   22000 23-OCT-24
+        39 Niranjan                  22000
+        40                           21000 23-OCT-24
+
+6 rows selected.
+
+SQL> update tbl_employee set doj='06-aug-24' where eid in (33,39);
+
+2 rows updated.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY DOJ
+---------- -------------------- ---------- ---------
+        31 Teddy                     25000 07-AUG-24
+        32 Kavin                     15000 23-OCT-24
+        33 Kumar                     20000 06-AUG-24
+        34 Bharath                   22000 23-OCT-24
+        39 Niranjan                  22000 06-AUG-24
+        40                           21000 23-OCT-24
+
+6 rows selected.
+
+SQL> update tbl_employee set ename='barath' where eid=40;
+
+1 row updated.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY DOJ
+---------- -------------------- ---------- ---------
+        31 Teddy                     25000 07-AUG-24
+        32 Kavin                     15000 23-OCT-24
+        33 Kumar                     20000 06-AUG-24
+        34 Bharath                   22000 23-OCT-24
+        39 Niranjan                  22000 06-AUG-24
+        40 barath                    21000 23-OCT-24
+
+6 rows selected.
+
+SQL> alter table tbl_employee drop column doj;
+
+Table altered.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40 barath                    21000
+
+6 rows selected.
+
+SQL> rollback tbl_employee;
+rollback tbl_employee
+         *
+ERROR at line 1:
+ORA-02181: invalid option to ROLLBACK WORK
+
+
+SQL> rollback ;
+
+Rollback complete.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40 barath                    21000
+
+6 rows selected.
+
+SQL> commit ;
+
+Commit complete.
+
+SQL> rollback:
+  2  commit ;
+SP2-0552: Bind variable "COMMIT" not declared.
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40 barath                    21000
+
+6 rows selected.
+
+SQL> alter table tbl_employee modify esalary number(7);
+
+Table altered.
+
+SQL> desc tbl_employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(5)
+ ENAME                                              VARCHAR2(20)
+ ESALARY                                            NUMBER(7)
+
+SQL> alter table tbl_employee rename column esalary to  e_salary
+  2
+SQL> alter table tbl_employee rename column esalary to  e_salary;
+
+Table altered.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                  E_SALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40 barath                    21000
+
+6 rows selected.
+
+SQL> alter table tbl_employee rename to tbl_employe;
+
+Table altered.
+
+SQL> desc tbl_employe;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(5)
+ ENAME                                              VARCHAR2(20)
+ E_SALARY                                           NUMBER(7)
+
+SQL> rename tbl_employee;
+rename tbl_employee
+                  *
+ERROR at line 1:
+ORA-00946: missing TO keyword
+
+
+SQL> alter table tbl_employe rename to tbl_employee;
+
+Table altered.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                  E_SALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40 barath                    21000
+
+6 rows selected.
+
+SQL> delete from tbl_employee where eid=40;
+
+1 row deleted.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                  E_SALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                  E_SALARY
+---------- -------------------- ----------
+        31 Teddy                     25000
+        32 Kavin                     15000
+        33 Kumar                     20000
+        34 Bharath                   22000
+        39 Niranjan                  22000
+        40 barath                    21000
+
+6 rows selected.
+
+SQL>
